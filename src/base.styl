@@ -1,0 +1,25 @@
+@require '~normalize-styl/normalize'
+@require './box-sizing'
+@require './font-family'
+@require './flex'
+
+html
+  @extend $font-family-default-400
+  font-size 16px
+  line-height 26px
+  text-rendering optimizeLegibility
+  font-variant-ligatures common-ligatures
+  font-kerning normal
+  font-feature-settings 'liga', 'clig', 'kern'
+
+body
+  overflow-y scroll
+
+a
+  color inherit
+
+table
+  border-spacing 0
+
+td
+  padding 0
