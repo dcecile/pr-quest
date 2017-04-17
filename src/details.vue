@@ -2,9 +2,9 @@
 main.pr-details
   h2.pr-details-header {{leader.name}} ({{leader.riding}})
   div.pr-details-split
-    img.pr-details-photo(v-if="leader.photo" v-bind:src="leader.photo")
+    img.pr-details-photo(v-if='leader.photo' v-bind:src='leader.photo')
     div.pr-details-info
-      a(v-bind:href='leader.email') Email
+      a(v-bind:href='leader.email' target='blank') Email
       a(v-if='leader.twitter' v-bind:href='leader.twitter') Twitter
       a(v-if='leader.homepage' v-bind:href='leader.homepage') Homepage
       a(v-bind:href='leader.externalLink') Full info
@@ -13,11 +13,22 @@ main.pr-details
         td Support for PR (2017)
         td.pr-details-support-data {{ leader.support2017 }}
       tr
-        td Promise of PR (#[a(href="https://www.hilltimes.com/2017/02/13/liberals-say-electoral-reform-wont-main-issue-next-election-cause-problems/95863") 2015])
+        td Promise of PR (#[a(href='https://www.hilltimes.com/2017/02/13/liberals-say-electoral-reform-wont-main-issue-next-election-cause-problems/95863') 2015])
         td.pr-details-support-data {{ leader.promise2015 }}
       tr
-        td Vote for PR (#[a(href="https://openparliament.ca/votes/41-2/291/") 2014])
+        td Vote for PR (#[a(href='https://openparliament.ca/votes/41-2/291/') 2014])
         td.pr-details-support-data {{ leader.vote2014 }}
+  blockquote.pr-details-quote(v-if='leader.statementText')
+    | &ldquo;{{ leader.statementText }}&rdquo;
+    = ' '
+    cite
+      a(v-bind:href='leader.statementLink')
+        | ({{ leader.statementDate }})
+  div.pr-details-missing-quote(v-else)
+    | No statement recorded.
+  a.pr-details-add-quote(v-bind:href='addQuoteTemplate' target='_blank')
+    | {{ addQuotePrompt }}
+
 </template>
 
 <script>
@@ -28,6 +39,14 @@ export default {
   computed: {
     leader () {
       return data.findLiberal(this.id)
+    },
+    addQuotePrompt () {
+      return this.leader.statementText
+        ? 'Do you have a newer statement?'
+        : 'Do you have a statement to add?'
+    },
+    addQuoteTemplate () {
+      return `mailto:dancecile@gmail.com?subject=The PR Quest new statement for ${this.leader.name}&body=Hi, I've got a new statement for ${this.leader.name}: ...`
     }
   }
 }
@@ -42,7 +61,7 @@ export default {
   @extend $flex-column
   border 2px solid black
   margin-bottom 2.5rem
-  padding 1.8rem 2.3rem
+  padding 1.8rem 2.3rem 2.0rem
 
 .pr-details-header
   @extend $font-family-default-700
@@ -100,4 +119,20 @@ export default {
   padding-left 0.4em
   +breakpoint-large-width()
     padding-left 1em
+
+.pr-details-quote, .pr-details-missing-quote
+  @extend $font-family-default-400
+  margin 0
+  margin-top 1.8rem
+  font-size 1.1rem
+  font-style italic
+
+.pr-details-quote
+  text-indent -0.5em
+
+.pr-details-add-quote
+  @extend $font-family-alt-400
+  font-size 1.1rem
+  margin-top 0.5rem
+  align-self flex-end
 </style>

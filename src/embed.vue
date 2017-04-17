@@ -1,8 +1,12 @@
 <template lang="pug">
 main.pr-embed
-  p.pr-embed-intro All of The PR Quest&rsquo;s data is on #[a(href="https://airtable.com/shrEDWweTjiELNcuz") Airtable] and embedded below:
-  iframe.airtable-embed(src="https://airtable.com/embed/shrEDWweTjiELNcuz?backgroundColor=red&viewControls=on" frameborder="0" onmousewheel="")
-  p.pr-embed-outro To edit this data, #[a(href="mailto:dancecile@gmail.com?subject=The PR Quest contributor request&body=Hi, I'd like to help out with the data you're using for The PR Quest. Can you add me to the Airtable project?" target="_blank") send me an email].
+  p.pr-embed-intro All of The PR Quest&rsquo;s data is on #[a(href='https://airtable.com/shrEDWweTjiELNcuz') Airtable] and embedded below:
+  iframe.airtable-embed(src='https://airtable.com/embed/shrEDWweTjiELNcuz?backgroundColor=red&viewControls=on' frameborder='0' onmousewheel='')
+  p.pr-embed-outro
+    | To edit this data,
+    = ' '
+    a(href='mailto:dancecile@gmail.com?subject=The PR Quest contributor request&body=Hi, I&rsquo;d like to help out with the data you&rsquo;re using for The PR Quest. Can you add me to the Airtable project?' target='_blank') send me an email
+    | .
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template lang="pug">
 main.pr-home
-  input.pr-home-search(v-model.trim="search" placeholder="Search by MP name, riding name, or postal code")
+  input.pr-home-search(v-model.trim='search' placeholder='Search by MP name, riding name, or postal code')
   div.pr-home-list
     pr-card.pr-home-card(v-for='card in visibleLeaders' v-bind:leader='card' v-bind:key='card.openID')
-  a.pr-home-button(v-if="hiddenLeadersCount > 0" v-on:click="showHiddenLeaders") Show remaining {{ hiddenLeadersCount }} MPs...
+  a.pr-home-button(v-if='hiddenLeadersCount > 0' v-on:click='showHiddenLeaders') Show remaining {{ hiddenLeadersCount }} MPs...
 </template>
 
 <script>

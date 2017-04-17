@@ -1,11 +1,11 @@
 <template lang="pug">
 router-link.pr-card(v-bind:to='leader.link')
-  img.pr-card-photo(v-if="leader.photo" v-bind:src="leader.photo")
+  img.pr-card-photo(v-if='leader.photo' v-bind:src='leader.photo')
   div.pr-card-info
     h2.pr-card-name {{leader.name}}
     h3.pr-card-riding {{leader.riding}}
-    p.pr-card-booster(v-if="promise") {{promise}}
-    p.pr-card-booster(v-if="vote") {{vote}}
+    p.pr-card-booster(v-if='promise') {{promise}}
+    p.pr-card-booster(v-if='vote') {{vote}}
 </template>
 
 <script>

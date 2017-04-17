@@ -3,7 +3,13 @@ div.pr-summary
   p.pr-summary-description
     | Liberal MPs &amp; the committee report on Electoral Reform:
   div.pr-summary-data
-    | #[router-link(to='/report-vote/progress') {{potential}}]&nbsp;potential supporters, and&nbsp; #[router-link(to='/report-vote/progress') {{committed}} / 20] &nbsp;committed supporters
+    router-link(to='/report-vote/progress') {{potential}}
+    = ' '
+    | potential supporters, and
+    = ' '
+    router-link(to='/report-vote/progress') {{committed}} / 20
+    = ' '
+    | committed supporters
 
 </template>
 
