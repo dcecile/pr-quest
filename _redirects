@@ -1,0 +1,5 @@
+# Redirect and rewrite rules for Netlify
+/report-vote /index.html 200
+/report-vote/progress /index.html 200
+/report-vote/data /index.html 200
+/report-vote/leader/* /index.html 200

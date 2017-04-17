@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import CopyPlugin from 'copy-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -104,7 +105,10 @@ export default {
       }),
       new webpack.LoaderOptionsPlugin({
         minimize: true
-      })
+      }),
+      new CopyPlugin([
+        { from: './_redirects', to: './' }
+      ])
     ]
   }),
   devServer: {
