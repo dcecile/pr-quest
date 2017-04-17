@@ -20,7 +20,8 @@ export default {
       { name: 'Unknown', leaders: [] },
       { name: 'Positive indicator', leaders: [] },
       { name: 'Fundamentally opposed', leaders: [] },
-      { name: 'Talking points', leaders: [] }
+      { name: 'Talking points', leaders: [] },
+      { name: 'Eventual agreement', leaders: [] }
     ]
     for (const leader of Data.liberals) {
       const level = levels.find(level => level.name === leader.support2017)
