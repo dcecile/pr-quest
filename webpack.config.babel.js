@@ -3,7 +3,10 @@ import CopyPlugin from 'copy-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import PrerenderSpaPlugin from 'prerender-spa-plugin'
 import {resolve} from 'path'
+
+import data from './src/data'
 
 const babelLoader = {
   test: /\.js$/,
@@ -59,11 +62,12 @@ function choosePlugins (plugins) {
 }
 
 const publicPath = '/'
+const outputPath = resolve(__dirname, './dist')
 
 export default {
   entry: [ 'babel-polyfill', './src/base.styl', './src/main.js' ],
   output: {
-    path: resolve(__dirname, './dist'),
+    path: outputPath,
     publicPath: publicPath,
     filename: 'build.[hash].js'
   },
@@ -108,7 +112,24 @@ export default {
       }),
       new CopyPlugin([
         { from: './_redirects', to: './' }
-      ])
+      ]),
+      new PrerenderSpaPlugin(
+        outputPath,
+        [
+          '/report-vote',
+          '/report-vote/progress',
+          '/report-vote/data',
+          ...data.liberals.map(leader => leader.link)
+        ],
+        {
+        }
+      ),
+      new PrerenderSpaPlugin(
+        outputPath,
+        [ '/' ],
+        {
+        }
+      )
     ]
   }),
   devServer: {

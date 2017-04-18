@@ -1,5 +1,5 @@
 <template lang="pug">
-div.pr-app
+div.vue-app.pr-app
   header.pr-app-header
     h1.pr-app-content
       router-link.pr-app-header-title(to='/')
