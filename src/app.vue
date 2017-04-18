@@ -11,7 +11,7 @@ div.pr-app
     div.pr-app-content
       a.pr-app-footer-link(href='https://www.facebook.com/groups/ProportionalRepresentationCanada/permalink/1328907820489306/?match=cmVwb3J0LHZvdGU%3D') Why the committee report
       router-link.pr-app-footer-link(to='/report-vote/data') View data
-      a.pr-app-footer-link(href='https://github.com') View code
+      a.pr-app-footer-link(href='https://github.com/dcecile/pr-quest') View code
       a.pr-app-footer-link(href='https://twitter.com/dancecile') Maintained by Dan Cecile
 </template>
 
